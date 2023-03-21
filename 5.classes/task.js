@@ -70,31 +70,12 @@ class Library
   // Найти книгу
   findBookBy(type, value)
   {
-    var book;
-    if(type == "name")
-    {
+      let book;
       this.books.forEach(element => {              
-            if(element.name == value) {
+          if (element[type] == value) {
                 book = element;
             }
-      });
-    }
-    else if(type == "releaseDate")
-    {
-      this.books.forEach(element => {              
-            if(element.releaseDate == value) {
-                book = element;
-            }
-      });
-    }
-    else if(type == "pagesCount")
-    {
-      this.books.forEach(element => {              
-            if(element.pagesCount == value) {
-                book = element;
-            }
-      });
-    }
+      });    
 
     if(!book) book = null; // если не нашли книгу = null
     return book;
@@ -103,18 +84,17 @@ class Library
   // Выдать книгу
   giveBookByName(bookName)
   {
-    var index;
-    var book;
+    let index;
+    let book;
     for(var i = 0; i < this.books.length; i++)
       if(this.books[i].name == bookName) 
       {
         index = i;
         book = this.books[i];
       }
-    this.books.splice(index);
+    this.books.splice(index, 1);
     
     if(!book) book = null; // если не нашли книгу = null
     return book;
   }
 }
-
